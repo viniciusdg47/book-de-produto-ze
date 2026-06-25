@@ -141,7 +141,7 @@ export const sections: Section[] = [
         mockup: "carrossel-marcas",
         regionalizable: false,
         features: [
-          { title: "Personalização", description: "Marcas exibidas e ordenação definidas pelo time comercial via CMS, ativadas por praça e período sem necessidade de deploy", tag: "Permite Personalização" },
+          { title: "Personalização", description: "Lista fixa de marcas selecionadas e ordenadas pelo time comercial. Não há personalização por usuário no comportamento atual.", tag: "Sem Personalização" },
           { title: "Onde aparece", description: "Home — carrossel 'Marcas que amamos', abaixo das prateleiras de produto.", tag: "Onde aparece" },
           { title: "Limitação técnica", description: "Adição de novas marcas parceiras exige criação de Brand Page e integração ao catálogo monolítico com deploy", tag: "Monolito esforço alto de alteração" },
           { title: "Destaque", description: "Seleção curada que direciona o usuário para a Brand Page com portfólio completo e storytelling da marca parceira", tag: "Destaque" },

@@ -528,39 +528,51 @@ export default function App() {
                       )}
 
                       <div className="feature-list space-y-4">
-                        {screen.features.map((f) => (
-                          <div key={f.title} className="feature-card flex gap-4 p-5 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:shadow-sm transition">
-                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
-                              f.tag === "Não Regionalizável" || f.tag === "Sem Personalização"
-                                ? "bg-rose-50"
-                                : f.tag === "Monolito esforço alto de alteração"
-                                ? "bg-amber-50"
-                                : f.tag === "Onde aparece"
-                                ? "bg-blue-50"
-                                : f.tag === "Destaque"
-                                ? "bg-purple-50"
-                                : f.tag === "Permite Personalização"
-                                ? "bg-emerald-50"
-                                : "bg-indigo-50"
-                            }`}>
-                              {f.tag === "Não Regionalizável" || f.tag === "Sem Personalização"
-                                ? <X className="w-4 h-4 text-rose-500" />
-                                : f.tag === "Monolito esforço alto de alteração"
-                                ? <AlertTriangle className="w-4 h-4 text-amber-500" />
-                                : f.tag === "Onde aparece"
-                                ? <MapPin className="w-4 h-4 text-blue-500" />
-                                : f.tag === "Destaque"
-                                ? <Lightbulb className="w-4 h-4 text-purple-600" />
-                                : f.tag === "Permite Personalização"
-                                ? <Check className="w-4 h-4 text-emerald-600" />
-                                : <Check className="w-4 h-4 text-indigo-600" />}
+                        {screen.features.map((f) => {
+                          const isPersonalization = f.title === "Personalização";
+                          const personalizationValue = f.tag === "Sem Personalização" ? "Não" : "Sim";
+
+                          return (
+                            <div key={f.title} className="feature-card flex gap-4 p-5 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:shadow-sm transition">
+                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+                                f.tag === "Não Regionalizável" || f.tag === "Sem Personalização"
+                                  ? "bg-rose-50"
+                                  : f.tag === "Monolito esforço alto de alteração"
+                                  ? "bg-amber-50"
+                                  : f.tag === "Onde aparece"
+                                  ? "bg-blue-50"
+                                  : f.tag === "Destaque"
+                                  ? "bg-purple-50"
+                                  : f.tag === "Permite Personalização"
+                                  ? "bg-emerald-50"
+                                  : "bg-indigo-50"
+                              }`}>
+                                {f.tag === "Não Regionalizável" || f.tag === "Sem Personalização"
+                                  ? <X className="w-4 h-4 text-rose-500" />
+                                  : f.tag === "Monolito esforço alto de alteração"
+                                  ? <AlertTriangle className="w-4 h-4 text-amber-500" />
+                                  : f.tag === "Onde aparece"
+                                  ? <MapPin className="w-4 h-4 text-blue-500" />
+                                  : f.tag === "Destaque"
+                                  ? <Lightbulb className="w-4 h-4 text-purple-600" />
+                                  : f.tag === "Permite Personalização"
+                                  ? <Check className="w-4 h-4 text-emerald-600" />
+                                  : <Check className="w-4 h-4 text-indigo-600" />}
+                              </div>
+                              <div className="flex-1">
+                                <p className="mb-1">{f.title}</p>
+                                {isPersonalization && (
+                                  <p className={`mb-2 text-xs font-semibold ${
+                                    personalizationValue === "Sim" ? "text-emerald-700" : "text-rose-600"
+                                  }`}>
+                                    Personalização: {personalizationValue}
+                                  </p>
+                                )}
+                                <p className="text-sm text-slate-500 leading-relaxed">{f.description}</p>
+                              </div>
                             </div>
-                            <div className="flex-1">
-                              <p className="mb-1">{f.title}</p>
-                              <p className="text-sm text-slate-500 leading-relaxed">{f.description}</p>
-                            </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
 
                       <div className="footer-tags mt-8 flex gap-3 text-xs flex-wrap">
