@@ -531,6 +531,7 @@ export default function App() {
                         {screen.features.map((f) => {
                           const isPersonalization = f.title === "Personalização";
                           const personalizationValue = f.tag === "Sem Personalização" ? "Não" : "Sim";
+                          const title = isPersonalization ? `Personalização: ${personalizationValue}` : f.title;
 
                           return (
                             <div key={f.title} className="feature-card flex gap-4 p-5 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:shadow-sm transition">
@@ -560,14 +561,7 @@ export default function App() {
                                   : <Check className="w-4 h-4 text-indigo-600" />}
                               </div>
                               <div className="flex-1">
-                                <p className="mb-1">{f.title}</p>
-                                {isPersonalization && (
-                                  <p className={`mb-2 text-xs font-semibold ${
-                                    personalizationValue === "Sim" ? "text-emerald-700" : "text-rose-600"
-                                  }`}>
-                                    Personalização: {personalizationValue}
-                                  </p>
-                                )}
+                                <p className="mb-1">{title}</p>
                                 <p className="text-sm text-slate-500 leading-relaxed">{f.description}</p>
                               </div>
                             </div>
