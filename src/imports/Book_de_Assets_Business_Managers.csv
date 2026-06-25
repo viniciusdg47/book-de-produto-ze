@@ -1,0 +1,31 @@
+#;Assets;O que é (Descrição breve);Localização no app;Responsavel por Atualização;Precisa de Release?;Regionalizável (sim/não);Observações
+1;Welcome Page;Página de boas vindas onde é possível trabalhar as imagens e atributos que queremos destacar;;Produto;Sim;não;
+2;Componente de categorias;Lista em formato visual das categorias existentes em nosso aplicativo. As imagens dos produtos que representam as categorias são os que chamamos de produtos âncoras. Os tipos de categoria existentes hoje são: âncora, estruturante, complementar e estratégica;;Produto;Sim;não;
+3;Banner Hero;Espaço para comunicação de campanhas internas e campanhas de marcas Ambev;;Comercial;Não;sim;
+4;Prateleira de Ofertas;Prateleira que exibe as melhores ofertas para aquele usuário. É controlada por um modelo algorítmico de Digital Insight;;Digital Insights;Não;sim;1:1
+5;Rec4U;Prateleira com os últimos produtos comprados pelo usuário, e produtos relacionados. É controlada por um modelo algorítmico de Digital Insight;;Digital Insights;Não;sim;1:1
+6;Carrossel de ofertas do dia;Espaço para comunicação de conjunto de ofertas. É possível o cadastro de 2 a 5 conjuntos. Dentro de cada conjunto são cadastradas diversas ofertas;;Comercial;Não;não;
+7;Espaço Chopp Showcase;Espaço para divulgação de campanhas e oferta relacionadas ao CBE;;Produto;Sim;não;
+8;Recomendados pelo Zé;Prateleira com os produtos selecionados pelo time comercial para divulgação e impulsão em vendas. É controlada por um modelo algorítmico de Digital Insight;;Digital Insights;Não;sim;1:1
+9;Carrossel de marcas;Carrossel com lista de marcas selecionadas que levam para a página própria da marca (Branding Page). A ordenação é gerenciada pelo time comercial;;Produto;Não;não;"""Marcas que amamos"""
+10;Carrossel de Banners;Carrossel com banners para comunicação de campanhas internas e externas;;Comercial;Não;sim;"""Destaques"""
+11;Prateleiras Showcase;Prateleira é uma forma agrupamento de SKUs selecionados. Pode ser uma sub-categoria ou uma seleção independente de itens. Espaço dedicado para visualização das prateleiras desejadas pelo time comercial. Atualmente não há um limite de prateleiras neste espaço;;Comercial;Não;não;
+12;Banners;Lista de formatos possíveis para comunicação de campanhas em diversos pontos da jornada. Para mais detalhes, conferir o guia de formatos;;Comercial;Não;sim;Formatos estarão disponíveis no guia de CRM
+13;Páginas de categorias;Página dedicada para organização e disponibilização de produtos de uma categoria. Cada categoria tem sua particularidade e disposição de prateleiras e sub-categorias independentes.;;Produto;Sim;não;
+14;Páginas de prateleiras;Página dedicada para visualização de uma seleção de produtos. Não há limite para quantidade de produtos selecionados. Uma página de prateleira pode ter uma imagem de abertura;;Comercial;Não;não;
+15;Página de produto (PDP);Página com detalhes e atributos de um SKU. Nesta página são exibidos o valor do produto, pontos do Zé Compensa, imagem com possibilidade de zoom, descrição e atributos do produto. Temos 3 tipos de páginas de produtos: produto sem desconto, produto com desconto, produto com desconto progressivo, pack de SKUs;;Produto;Sim;não;
+16;Branding Page;Página oficial de uma marca dentro do app. Prateleiras podem ser disponibilizadas dentro da página. A imagem do topo é personalizada com a identidade da marca. Ao final da página temos um banner para divulgação de campanhas;;Produto;Sim;não;
+17;Desconto Progressivo;Tipo de oferta possível em um SKU. É exibida na página de produto. Ferramenta com objetivo de aumento de AOV. É possível a exibição de 4 níveis de ofertas de quantidades. Estas quantidades são controladas por um modelo de pricing e digital insights;;;;sim;
+18;Recomendação Item Similar;Modelo de Digital Insights com o objetivo de recomendar itens similares com valor de venda maior do que o produto da página. É exibido dentro de uma página de produto.;;;;sim;
+19;Combina com;Modelo de Digital Insights com o objetivo de recomendar 1 item mais comprado em conjunto com o produto da página. É exibido na página de produto. ;;;;sim;1 item, não um carrossel
+20;Pré-sacola;Etapa apresentada para o usuário após adicionar algum item na sacola. Modelo de Digital Insights com o objetivo de recomendar itens que combinam com o produto adicionado.;;;;sim;
+21;Leve também;Etapa de recomendação pré-fechamento de pedido. Modelo de Digital Insights com o objetivo de complemento com itens relacionados e comprados anteriormente pelo usuário;;;;sim;"Recomendação após pré-sacola ""Vai mais alguma coisinha?"""
+22;Recomendação Complemento de cesta;"Modelo de Digital Insights com o objetivo de complemento de cesta com itens de ""compra por impulso"" (buscar nome para esse tipo de venda)";;;;sim;"Recomendação no checkout ""Que tal pedir também?"""
+23;Pesquisa In App;Espaço dedicado para apresentação de pesquisas para usuários. Pode ser exibido em diversos pontos da jornada;;;;sim;
+24;Promo Relâmpago;Espaço dedicado para ofertas especiais por tempo limitado;;;;não;
+25;;;;;;;
+26;;;;;;;
+27;;;;;;;
+28;;;;;;;
+29;;;;;;;
+30;;;;;;;

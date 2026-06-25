@@ -1,0 +1,226 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 6mm;
+  }
+
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  html,
+  body,
+  #root {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  .book-shell {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  .print-sidebar {
+    display: none !important;
+  }
+
+  .book-content {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .book-content > section {
+    break-after: page;
+    page-break-after: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-sizing: border-box !important;
+    height: 198mm !important;
+    min-height: 198mm !important;
+    max-height: 198mm !important;
+    overflow: hidden !important;
+    padding: 8mm 10mm !important;
+    border-bottom: 0 !important;
+  }
+
+  .book-content > section:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .asset-section-inner,
+  .about-section > div {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    max-width: none !important;
+  }
+
+  .asset-section h2,
+  .about-section h2 {
+    font-size: 24px !important;
+    line-height: 1.05 !important;
+    margin-bottom: 2mm !important;
+  }
+
+  .asset-section-inner > p,
+  .about-section > div > p {
+    font-size: 9pt !important;
+    line-height: 1.35 !important;
+    margin-bottom: 4mm !important;
+    max-width: 190mm !important;
+  }
+
+  .screen-slide {
+    display: grid !important;
+    grid-template-columns: 42% 58% !important;
+    grid-template-rows: auto 1fr !important;
+    gap: 3mm 6mm !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .screen-kicker {
+    grid-column: 1 / -1 !important;
+    margin: 0 !important;
+  }
+
+  .screen-kicker p {
+    font-size: 7pt !important;
+    line-height: 1.1 !important;
+  }
+
+  .mockup-panel {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 136mm !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    padding: 2mm !important;
+    border-radius: 10px !important;
+  }
+
+  .mockup-panel > div {
+    zoom: 0.72;
+    transform-origin: center center;
+  }
+
+  .screen-copy {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    min-width: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .screen-copy > p:first-child {
+    font-size: 7.5pt !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1mm !important;
+  }
+
+  .screen-copy h3 {
+    font-size: 16pt !important;
+    line-height: 1.1 !important;
+    margin-bottom: 2mm !important;
+  }
+
+  .responsible-chip {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 1.5mm !important;
+    max-width: 100% !important;
+    margin-bottom: 4mm !important;
+    padding: 1.4mm 2.4mm !important;
+    border-radius: 999px !important;
+    font-size: 7pt !important;
+    line-height: 1.1 !important;
+  }
+
+  .responsible-chip span:first-child {
+    letter-spacing: 0.08em !important;
+  }
+
+  .responsible-chip strong {
+    font-size: 7.5pt !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  .feature-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: repeat(2, 28mm) !important;
+    align-items: stretch !important;
+    gap: 3mm !important;
+  }
+
+  .feature-card {
+    box-sizing: border-box !important;
+    height: 28mm !important;
+    min-height: 28mm !important;
+    max-height: 28mm !important;
+    gap: 2.5mm !important;
+    padding: 2.6mm !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .feature-card > div:first-child {
+    width: 7mm !important;
+    height: 7mm !important;
+    border-radius: 2mm !important;
+  }
+
+  .feature-card svg {
+    width: 4mm !important;
+    height: 4mm !important;
+  }
+
+  .feature-card p {
+    font-size: 6.55pt !important;
+    line-height: 1.16 !important;
+    overflow: visible !important;
+  }
+
+  .feature-card p:first-child {
+    margin-bottom: 0.7mm !important;
+    font-size: 7.5pt !important;
+    line-height: 1.15 !important;
+  }
+
+  .footer-tags {
+    margin-top: 4mm !important;
+    gap: 2mm !important;
+  }
+
+  .footer-tags span {
+    padding: 1.2mm 2.2mm !important;
+    font-size: 7pt !important;
+  }
+
+  .about-section .grid {
+    gap: 4mm !important;
+    margin-bottom: 6mm !important;
+  }
+
+  .about-section .grid > div {
+    padding: 4mm !important;
+    border-radius: 10px !important;
+  }
+}
