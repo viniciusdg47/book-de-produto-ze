@@ -143,7 +143,7 @@
     align-items: center !important;
     gap: 1.5mm !important;
     max-width: 100% !important;
-    margin-bottom: 4mm !important;
+    margin-bottom: 2mm !important;
     padding: 1.4mm 2.4mm !important;
     border-radius: 999px !important;
     font-size: 7pt !important;
@@ -160,19 +160,51 @@
     letter-spacing: 0.06em !important;
   }
 
+  .business-autonomy {
+    box-sizing: border-box !important;
+    margin-bottom: 3mm !important;
+    padding: 2.3mm !important;
+    border-radius: 8px !important;
+  }
+
+  .business-autonomy > div:first-child {
+    margin-bottom: 1.6mm !important;
+  }
+
+  .business-autonomy svg {
+    width: 3.3mm !important;
+    height: 3.3mm !important;
+  }
+
+  .business-autonomy p {
+    font-size: 6.3pt !important;
+    line-height: 1.18 !important;
+  }
+
+  .business-autonomy p[class*="uppercase"] {
+    font-size: 5.7pt !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .business-autonomy span {
+    font-size: 6.2pt !important;
+    line-height: 1.1 !important;
+  }
+
   .feature-list {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    grid-template-rows: repeat(2, 28mm) !important;
+    grid-template-rows: repeat(2, 25mm) !important;
     align-items: stretch !important;
     gap: 3mm !important;
   }
 
   .feature-card {
     box-sizing: border-box !important;
-    height: 28mm !important;
-    min-height: 28mm !important;
-    max-height: 28mm !important;
+    height: 25mm !important;
+    min-height: 25mm !important;
+    max-height: 25mm !important;
     gap: 2.5mm !important;
     padding: 2.6mm !important;
     border-radius: 8px !important;

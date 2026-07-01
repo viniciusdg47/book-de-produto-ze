@@ -1,6 +1,6 @@
-import { BookOpen, ChevronDown, ChevronRight, Printer, Download, Check, MapPin, X, AlertTriangle, Lightbulb } from "lucide-react";
+import { BookOpen, ChevronDown, ChevronRight, Printer, Download, Check, MapPin, X, AlertTriangle, Lightbulb, Gauge } from "lucide-react";
 import { useState, useRef } from "react";
-import { sections, productInfo } from "./components/product-book-data";
+import { sections, productInfo, type Screen } from "./components/product-book-data";
 import { PhoneMockup } from "./components/phone-mockup";
 
 const svgPaths = {
@@ -205,6 +205,156 @@ function ResponsibleBadge({ value }: { value: string }) {
       <span className="font-semibold uppercase tracking-[0.12em]">Time responsável</span>
       <span className="h-1 w-1 rounded-full bg-indigo-300" />
       <strong className="font-semibold uppercase tracking-[0.08em] text-indigo-950">{owner || value}</strong>
+    </div>
+  );
+}
+
+type BusinessAutonomy = {
+  status: "Sim" | "Não" | "Parcial" | "Em breve" | "A validar";
+  channel: string;
+  complexity: "Baixa" | "Média" | "Alta" | "Baixa/Média" | "A validar";
+  sla: string;
+  note: string;
+};
+
+const normalizeText = (value: string) =>
+  value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+function hasFooterTag(screen: Screen, label: string) {
+  return Boolean(screen.footerTags?.some((tag) => normalizeText(tag.label) === normalizeText(label)));
+}
+
+function getBusinessAutonomy(screen: Screen): BusinessAutonomy {
+  const title = normalizeText(screen.title);
+  const owner = normalizeText(screen.responsible ?? "");
+  const needsRelease = hasFooterTag(screen, "Precisa release");
+
+  if (title === "branding page") {
+    return {
+      status: "Em breve",
+      channel: "Admin Purchase",
+      complexity: "Baixa/Média",
+      sla: "Previsão: fim do Q2",
+      note: "Criação de Brand Page e alterações de header/footer estão em desenvolvimento. Até a entrega, solicitar via Teams Comercial + Produto.",
+    };
+  }
+
+  if (title === "carrossel de marcas") {
+    return {
+      status: "Em breve",
+      channel: "Admin Purchase",
+      complexity: "Baixa",
+      sla: "Previsão: fim do Q2",
+      note: "Gestão do componente Marcas que amamos está em desenvolvimento no Admin. Até lá, solicitar via Teams Comercial + Produto.",
+    };
+  }
+
+  if (owner.includes("comercial")) {
+    return {
+      status: "Sim",
+      channel: "CMS/Admin comercial",
+      complexity: "Baixa",
+      sla: "D0-D2",
+      note: "Business tem autonomia para ajustes operacionais quando conteúdo, campanha e assets já estão aprovados.",
+    };
+  }
+
+  if (owner.includes("digital insights")) {
+    return {
+      status: "Parcial",
+      channel: "Digital Insights + Produto",
+      complexity: "Média",
+      sla: "[A validar com DI]",
+      note: "Business pode solicitar objetivo, curadoria ou segmentação; alteração de regra, modelo ou algoritmo depende de priorização técnica.",
+    };
+  }
+
+  if (owner.includes("produto") || owner.includes("cx") || owner.includes("validar")) {
+    return {
+      status: "Não",
+      channel: "Teams Comercial + Produto",
+      complexity: needsRelease ? "Alta" : "Média",
+      sla: needsRelease ? "Janela de release" : "Próxima janela de atendimento",
+      note: "Business deve abrir solicitação para Produto. O impacto varia conforme necessidade de discovery, design, engenharia e release.",
+    };
+  }
+
+  return {
+    status: "A validar",
+    channel: "[A definir]",
+    complexity: "A validar",
+    sla: "[A validar]",
+    note: "Owner e autonomia ainda precisam ser confirmados com Produto, Comercial e times técnicos envolvidos.",
+  };
+}
+
+function complexityLevel(value: BusinessAutonomy["complexity"]) {
+  if (value === "Baixa") return 1;
+  if (value === "Média" || value === "Baixa/Média") return 2;
+  if (value === "Alta") return 3;
+  return 0;
+}
+
+function statusStyle(status: BusinessAutonomy["status"]) {
+  if (status === "Sim") return "bg-emerald-50 text-emerald-700 border-emerald-100";
+  if (status === "Não") return "bg-rose-50 text-rose-700 border-rose-200";
+  if (status === "Parcial") return "bg-amber-50 text-amber-700 border-amber-200";
+  if (status === "Em breve") return "bg-indigo-50 text-indigo-700 border-indigo-100";
+  return "bg-slate-100 text-slate-600 border-slate-200";
+}
+
+function complexityColor(level: number, active: boolean) {
+  if (!active) return "bg-slate-200";
+  if (level === 1) return "bg-emerald-500";
+  if (level === 2) return "bg-amber-500";
+  return "bg-rose-500";
+}
+
+function BusinessAutonomyPanel({ screen }: { screen: Screen }) {
+  const autonomy = getBusinessAutonomy(screen);
+  const level = complexityLevel(autonomy.complexity);
+
+  return (
+    <div className="business-autonomy mb-5 rounded-2xl border border-slate-100 bg-slate-50/70 p-4">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <Gauge className="h-4 w-4 text-slate-400" />
+          <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">Autonomia Business</p>
+        </div>
+        <span className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold ${statusStyle(autonomy.status)}`}>
+          {autonomy.status}
+        </span>
+      </div>
+
+      <div className="grid grid-cols-3 gap-2">
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.1em] text-slate-400">Canal</p>
+          <p className="mt-1 text-xs font-medium leading-snug text-slate-700">{autonomy.channel}</p>
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.1em] text-slate-400">SLA</p>
+          <p className="mt-1 text-xs font-medium leading-snug text-slate-700">{autonomy.sla}</p>
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.1em] text-slate-400">Complexidade</p>
+          <div className="mt-1 flex items-center gap-1.5">
+            {[1, 2, 3].map((bar) => (
+              <span
+                key={bar}
+                className={`h-1.5 w-6 rounded-full ${complexityColor(level, bar <= level)}`}
+              />
+            ))}
+            <span className="ml-1 text-xs font-medium text-slate-700">{autonomy.complexity}</span>
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-3 text-xs leading-relaxed text-slate-500">{autonomy.note}</p>
     </div>
   );
 }
@@ -526,6 +676,7 @@ export default function App() {
                       {screen.responsible && (
                         <ResponsibleBadge value={screen.responsible} />
                       )}
+                      <BusinessAutonomyPanel screen={screen} />
 
                       <div className="feature-list space-y-4">
                         {screen.features.map((f) => {
