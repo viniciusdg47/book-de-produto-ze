@@ -321,37 +321,33 @@ function BusinessAutonomyPanel({ screen }: { screen: Screen }) {
 
   return (
     <div className="business-autonomy mb-5 rounded-2xl border border-slate-100 bg-slate-50/70 p-4">
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <Gauge className="h-4 w-4 text-slate-400" />
-          <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">Autonomia Business</p>
-        </div>
-        <span className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold ${statusStyle(autonomy.status)}`}>
-          {autonomy.status}
-        </span>
+      <div className="mb-3 flex items-center gap-2">
+        <Gauge className="h-4 w-4 text-slate-400" />
+        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">Autonomia Business</p>
       </div>
 
-      <div className="grid grid-cols-3 gap-2">
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.1em] text-slate-400">Canal</p>
-          <p className="mt-1 text-xs font-medium leading-snug text-slate-700">{autonomy.channel}</p>
-        </div>
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.1em] text-slate-400">SLA</p>
-          <p className="mt-1 text-xs font-medium leading-snug text-slate-700">{autonomy.sla}</p>
-        </div>
-        <div>
-          <p className="text-[10px] uppercase tracking-[0.1em] text-slate-400">Complexidade</p>
-          <div className="mt-1 flex items-center gap-1.5">
+      <div className="business-autonomy-chips flex flex-wrap gap-2">
+        <span className={`inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold ${statusStyle(autonomy.status)}`}>
+          Autonomia: {autonomy.status}
+        </span>
+        <span className="inline-flex items-center rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-700">
+          Canal: {autonomy.channel}
+        </span>
+        <span className="inline-flex items-center rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-700">
+          SLA: {autonomy.sla}
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-700">
+          Complexidade:
+          <span className="inline-flex items-center gap-1">
             {[1, 2, 3].map((bar) => (
               <span
                 key={bar}
-                className={`h-1.5 w-6 rounded-full ${complexityColor(level, bar <= level)}`}
+                className={`h-1.5 w-4 rounded-full ${complexityColor(level, bar <= level)}`}
               />
             ))}
-            <span className="ml-1 text-xs font-medium text-slate-700">{autonomy.complexity}</span>
-          </div>
-        </div>
+          </span>
+          {autonomy.complexity}
+        </span>
       </div>
 
       <p className="mt-3 text-xs leading-relaxed text-slate-500">{autonomy.note}</p>

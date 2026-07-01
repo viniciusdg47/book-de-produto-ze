@@ -171,6 +171,17 @@
     margin-bottom: 1.6mm !important;
   }
 
+  .business-autonomy-chips {
+    gap: 1.2mm !important;
+  }
+
+  .business-autonomy-chips > span {
+    padding: 1mm 1.8mm !important;
+    border-radius: 999px !important;
+    font-size: 6.1pt !important;
+    line-height: 1.1 !important;
+  }
+
   .business-autonomy svg {
     width: 3.3mm !important;
     height: 3.3mm !important;
